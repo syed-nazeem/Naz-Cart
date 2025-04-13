@@ -1,33 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Your Cart - Naz Cart</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <h1>Your Cart</h1>
-    <nav>
-      <a href="index.html">Home</a> |
-      <a href="products.html">Products</a> |
-      <a href="cart.html">Cart</a> |
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+<!-- Razorpay Script -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
-  <main>
-    <h2>Items in Your Cart</h2>
-    <ul id="cart-items">
-      <li>Product 1 - ₹499</li>
-      <li>Product 2 - ₹799</li>
-    </ul>
-    <p><strong>Total: ₹1,298</strong></p>
-    <button>Proceed to Checkout</button>
-  </main>
+<script>
+  function payNow() {
+    var options = {
+      "key": "YOUR_KEY_ID", // Replace this with your Razorpay Test Key ID
+      "amount": "129800", // ₹1298 in paise
+      "currency": "INR",
+      "name": "Naz-Cart",
+      "description": "Order Payment",
+      "image": "https://via.placeholder.com/100", // optional logo
+      "handler": function (response){
+        alert("Payment Successful!\nPayment ID: " + response.razorpay_payment_id);
+      },
+      "prefill": {
+        "name": "Syed Nazeem",
+        "email": "you@example.com",
+        "contact": "9999999999"
+      },
+      "theme": {
+        "color": "#f06292"
+      },
+      "method": {
+        "upi": true,
+        "card": true,
+        "netbanking": true,
+        "wallet": true
+      }
+    };
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
+  }
+</script>
 
-  <footer>
-    <p>&copy; 2025 Naz-Cart</p>
-  </footer>
-</body>
-</html>
+<!-- Update your checkout button -->
+<button onclick="payNow()">Pay with GPay / UPI</button>
