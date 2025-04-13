@@ -1,37 +1,16 @@
-<!-- Razorpay Script -->
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>UPI Payment - Naz-Cart</title>
+</head>
+<body>
+  <h2>Pay using UPI</h2>
+  <p>Click the button below to pay ₹2:</p>
 
-<script>
-  function payNow() {
-    var options = {
-      "key": "YOUR_KEY_ID", // Replace this with your Razorpay Test Key ID
-      "amount": "129800", // ₹1298 in paise
-      "currency": "INR",
-      "name": "Naz-Cart",
-      "description": "Order Payment",
-      "image": "https://via.placeholder.com/100", // optional logo
-      "handler": function (response){
-        alert("Payment Successful!\nPayment ID: " + response.razorpay_payment_id);
-      },
-      "prefill": {
-        "name": "Syed Nazeem",
-        "email": "you@example.com",
-        "contact": "9999999999"
-      },
-      "theme": {
-        "color": "#f06292"
-      },
-      "method": {
-        "upi": true,
-        "card": true,
-        "netbanking": true,
-        "wallet": true
-      }
-    };
-    var rzp1 = new Razorpay(options);
-    rzp1.open();
-  }
-</script>
-
-<!-- Update your checkout button -->
-<button onclick="payNow()">Pay with GPay / UPI</button>
+  <!-- UPI Payment Button (Replace UPI ID below) -->
+  <a href="upi://pay?pa=nazeemsuhaib1-1@okicici&pn=Syed%20Nazeem&am=2&cu=INR&tn=Naz-Cart%20Payment" target="_blank">
+    <button>Pay ₹2 with UPI</button>
+  </a>
+</body>
+</html>
